@@ -202,3 +202,8 @@ class CodeAnalyzer:
             self._ml.finalize_corpus()
 
         return results
+
+
+def get_supported_extensions():
+    """Return list of supported file extensions."""
+    return ['.py', '.js', '.ts', '.jsx', '.tsx']
