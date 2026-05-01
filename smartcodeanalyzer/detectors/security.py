@@ -175,3 +175,13 @@ class SecurityDetector:
                         suggestion=suggestion,
                     ))
         return issues
+
+
+def check_insecure_deserialization(source_code: str) -> list:
+    """Detect insecure deserialization patterns."""
+    issues = []
+    if 'pickle.loads' in source_code:
+        issues.append('Insecure use of pickle.loads - vulnerable to arbitrary code execution')
+    if 'yaml.load(' in source_code and 'Loader=' not in source_code:
+        issues.append('Insecure yaml.load without safe Loader')
+    return issues
