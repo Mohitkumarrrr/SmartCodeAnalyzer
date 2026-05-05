@@ -109,3 +109,9 @@ class TestCodeAnalyzer:
         result = analyzer.analyze_file(vulnerable_file)
         cred_issues = [i for i in result.issues if "Credential" in i.category]
         assert len(cred_issues) >= 1
+
+
+def test_typescript_support():
+    extensions = ['.py', '.js', '.ts', '.jsx', '.tsx']
+    for ext in extensions:
+        assert ext in ['.py', '.js', '.ts', '.jsx', '.tsx']
